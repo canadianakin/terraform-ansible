@@ -1,0 +1,6 @@
+[vm]
+52.179.12.245
+
+[vm:vars]
+ansible_become=true
+ansible_user=adminuser
