@@ -6,7 +6,7 @@ terraform {
     }
   }
 
-# Comment this block out for local state. Setup is required for remote state
+  # Comment this block out for local state. Setup is required for remote state
   backend "azurerm" {
     resource_group_name  = "terraform-state"
     storage_account_name = "tfansiblestorageakin"
@@ -26,7 +26,7 @@ resource "azurerm_resource_group" "va-demo" {
 }
 
 resource "local_file" "hosts" {
-    content = <<EOF
+  content  = <<EOF
 [vm]
 ${data.azurerm_public_ip.va-demo-ip-data.ip_address}
 
@@ -34,5 +34,5 @@ ${data.azurerm_public_ip.va-demo-ip-data.ip_address}
 ansible_become=true
 ansible_user=adminuser
 EOF
-    filename = "/home/akin/hosts"
+  filename = "/home/akin/hosts"
 }

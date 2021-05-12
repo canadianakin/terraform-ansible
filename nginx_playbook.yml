@@ -8,7 +8,7 @@
   hosts: localhost
 
   tasks:
-    - name: Configure Backend & Start
+    - name: Start Terraform
       community.general.terraform:
         project_path: './'
         state: '{{ state }}'
@@ -17,13 +17,7 @@
         #     storage_account_name: "tfansiblestorageakin"
         #     container_name: "terraform-state-container"
         #     key: "viaterraform.tfstate"
-
-    # - name: Start Terraform
-    #   community.general.terraform:
-    #     project_path: './'
-    #     state: present
-
-
+      
 -
   # Hosts: where our play will run and options it will run with
   hosts: all

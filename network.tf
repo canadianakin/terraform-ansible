@@ -13,9 +13,9 @@ resource "azurerm_subnet" "va-demo-subnet" {
 }
 
 resource "azurerm_network_interface" "va-demo-interface" {
-  name                      = "${var.prefix}-instance-1"
-  location                  = var.location
-  resource_group_name       = azurerm_resource_group.va-demo.name
+  name                = "${var.prefix}-instance-1"
+  location            = var.location
+  resource_group_name = azurerm_resource_group.va-demo.name
   #network_security_group_id = azurerm_network_security_group.allow-ssh.id
 
   ip_configuration {
@@ -42,7 +42,7 @@ resource "azurerm_network_security_group" "allow-ssh" {
     source_address_prefix      = var.ssh-source-address
     destination_address_prefix = "*"
   }
-    security_rule {
+  security_rule {
     name                       = "HTTP"
     priority                   = 1002
     direction                  = "Inbound"
@@ -52,7 +52,7 @@ resource "azurerm_network_security_group" "allow-ssh" {
     destination_port_range     = "80"
     source_address_prefix      = var.ssh-source-address
     destination_address_prefix = "*"
-}
+  }
 
   tags = {
     environment = "va-demo"

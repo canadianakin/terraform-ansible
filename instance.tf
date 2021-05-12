@@ -1,13 +1,17 @@
 # demo instance
 resource "azurerm_linux_virtual_machine" "va-demo-instance" {
-  name                  = "${var.prefix}-vm"
-  location              = var.location
-  resource_group_name   = azurerm_resource_group.va-demo.name
-  network_interface_ids = ["${azurerm_network_interface.va-demo-interface.id}"]
-  size               = "Standard_A1_v2"
-  admin_username      = "adminuser"
-  computer_name  = "demo-instance"
+  name                            = "${var.prefix}-vm"
+  location                        = var.location
+  resource_group_name             = azurerm_resource_group.va-demo.name
+  network_interface_ids           = ["${azurerm_network_interface.va-demo-interface.id}"]
+  size                            = "Standard_A1_v2"
+  admin_username                  = "adminuser"
+  computer_name                   = "demo-instance"
   disable_password_authentication = true
+
+  tags = {
+    env = "ansible"
+  }                           
 
   admin_ssh_key {
     username   = "adminuser"
