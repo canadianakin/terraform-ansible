@@ -5,10 +5,29 @@
 # of plays, with each play being a dictionary
 #
 -
+  hosts: localhost
 
+  tasks:
+    - name: Configure Backend & Start
+      community.general.terraform:
+        project_path: './'
+        state: '{{ state }}'
+        # backend_config:
+        #     resource_group_name: "terraform-state"
+        #     storage_account_name: "tfansiblestorageakin"
+        #     container_name: "terraform-state-container"
+        #     key: "viaterraform.tfstate"
+
+    # - name: Start Terraform
+    #   community.general.terraform:
+    #     project_path: './'
+    #     state: present
+
+
+-
   # Hosts: where our play will run and options it will run with
   hosts: all
-  
+ 
   # Tasks: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks
   tasks:
@@ -23,12 +42,12 @@
         state: restarted
       notify: Check HTTP Service
 
-  # Handlers: the list of handlers that are executed as a notify key from a task
+   # Handlers: the list of handlers that are executed as a notify key from a task
   handlers:
     - name: Check HTTP Service
       uri:
         url: http://{{ ansible_default_ipv4.address }}
         status_code: 200 
 
-# Three dots indicate the end of a YAML document
+ # Three dots indicate the end of a YAML document
 ...

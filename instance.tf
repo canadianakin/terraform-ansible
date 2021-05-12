@@ -1,9 +1,9 @@
 # demo instance
-resource "azurerm_linux_virtual_machine" "vt-demo-instance" {
+resource "azurerm_linux_virtual_machine" "va-demo-instance" {
   name                  = "${var.prefix}-vm"
   location              = var.location
-  resource_group_name   = azurerm_resource_group.vt-demo.name
-  network_interface_ids = ["${azurerm_network_interface.vt-demo-interface.id}"]
+  resource_group_name   = azurerm_resource_group.va-demo.name
+  network_interface_ids = ["${azurerm_network_interface.va-demo-interface.id}"]
   size               = "Standard_A1_v2"
   admin_username      = "adminuser"
   computer_name  = "demo-instance"
@@ -27,13 +27,13 @@ resource "azurerm_linux_virtual_machine" "vt-demo-instance" {
   }
 }
 
-resource "azurerm_public_ip" "vt-demo-ip" {
+resource "azurerm_public_ip" "va-demo-ip" {
   name                = "instance-1-public-ip"
   location            = var.location
-  resource_group_name = azurerm_resource_group.vt-demo.name
+  resource_group_name = azurerm_resource_group.va-demo.name
   allocation_method   = "Dynamic"
 
   tags = {
-    environment = "vt-demo"
+    environment = "va-demo"
   }
 }

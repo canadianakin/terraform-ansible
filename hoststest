@@ -1,4 +1,5 @@
 [vm]
+40.88.26.48
 
 [vm:vars]
 ansible_become=true
