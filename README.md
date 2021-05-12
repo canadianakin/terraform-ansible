@@ -8,3 +8,7 @@ This method requires a few extra steps.
 * - dynamic inventory requires installation of azure collection https://galaxy.ansible.com/azure/azcollection
 * More configuration for outputs, I still need to look into this
 
+# Issues
+* The dynamic inventory does not initialize until it has a resource to link to
+- ie: on the first run, there is no inventory and is only populated on subsequent runs
+
