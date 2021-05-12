@@ -11,7 +11,7 @@ resource "azurerm_linux_virtual_machine" "va-demo-instance" {
 
   tags = {
     env = "ansible"
-  }                           
+  }
 
   admin_ssh_key {
     username   = "adminuser"

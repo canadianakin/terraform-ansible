@@ -1,5 +1,0 @@
-[vm]
-
-[vm:vars]
-ansible_become=true
-ansible_user=adminuser

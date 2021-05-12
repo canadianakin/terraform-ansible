@@ -25,14 +25,3 @@ resource "azurerm_resource_group" "va-demo" {
   location = var.location
 }
 
-resource "local_file" "hosts" {
-  content  = <<EOF
-[vm]
-${data.azurerm_public_ip.va-demo-ip-data.ip_address}
-
-[vm:vars]
-ansible_become=true
-ansible_user=adminuser
-EOF
-  filename = "/home/akin/hosts"
-}

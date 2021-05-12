@@ -1,0 +1,10 @@
+plugin: azure_rm
+
+include_vm_resource_groups:
+- via-ansible
+
+auth_source: auto
+
+hostvar_expressions:
+  ansible_user: "'adminuser'"
+  ansible_become: "true"
