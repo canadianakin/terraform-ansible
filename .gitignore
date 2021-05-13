@@ -1,8 +1,10 @@
 mykey
 mykey.pub
+hosts
 
 # Local .terraform directories
 **/.terraform/*
+.terraform/
 
 # .tfstate files
 *.tfstate
