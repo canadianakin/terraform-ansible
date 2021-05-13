@@ -8,6 +8,9 @@ resource "azurerm_linux_virtual_machine" "dt-demo-instance" {
   admin_username      = "adminuser"
   computer_name  = "demo-instance"
   disable_password_authentication = true
+  tags = {
+    Ansible = "nginx"
+  }
 
   admin_ssh_key {
     username   = "adminuser"

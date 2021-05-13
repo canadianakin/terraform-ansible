@@ -17,11 +17,15 @@
         name: nginx
         state: latest
 
-    - name: Restart nginx
+    - name: Start nginx
       service:
         name: nginx
-        state: restarted
+        state: started
       notify: Check HTTP Service
+
+    - name: Display Host Name
+      debug:
+        msg: "{{ groups }}"
 
   # Handlers: the list of handlers that are executed as a notify key from a task
   handlers:

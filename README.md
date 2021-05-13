@@ -7,4 +7,4 @@ Testing various configurations and integrations of Ansible and Terraform
 - 
 
 * Issues
--  
+-  Ansible is not run unless there is a change in state. However, using a timestamp trigger will get it to run on every apply. This causes the "resource" to be destroyed and then recreated.

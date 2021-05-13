@@ -14,3 +14,13 @@ variable "prefix" {
   type    = string
   default = "dt-demo"
 }
+
+variable "inventory" {
+  type = string
+  default = "azure_rm.yml"
+}
+
+variable "playbook" {
+  type = string
+  default = "nginx_playbook.yml"
+}
