@@ -11,4 +11,4 @@ This method requires a few extra steps.
 # Issues
 * The dynamic inventory does not initialize until it has a resource to link to
 - ie: on the first run, there is no inventory and is only populated on subsequent runs
-
+- this issue would not be present if terraform were to call ansible, because vms would be provisioned 1st
