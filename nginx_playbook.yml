@@ -7,7 +7,7 @@
 -
 
   # Hosts: where our play will run and options it will run with
-  hosts: all
+  hosts: dt-demo*
   
   # Tasks: the list of tasks that will be executed within the play, this section
   # can also be used for pre and post tasks

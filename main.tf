@@ -11,7 +11,7 @@ terraform {
     resource_group_name  = "terraform-state"
     storage_account_name = "tfansiblestorageakin"
     container_name       = "terraform-state-container"
-    key                  = "viaterraform.tfstate"
+    key                  = "dynamicterraform.tfstate"
   }
 }
 
@@ -20,23 +20,19 @@ provider "azurerm" {
 }
 
 # Create a resource group
-resource "azurerm_resource_group" "vt-demo" {
-  name     = "via-terraform"
+resource "azurerm_resource_group" "dt-demo" {
+  name     = "dynamic-terraform"
   location = var.location
 }
 
-resource "local_file" "hosts" {
-    content = <<EOF
-[vm]
-${data.azurerm_public_ip.vt-demo-ip-data.ip_address}
-
-[vm:vars]
-ansible_become=true
-ansible_user=adminuser
+resource "local_file" "public_ips" {
+      content = <<EOF
+${data.azurerm_public_ip.dt-demo-ip-data.ip_address}
 EOF
-    filename = "./hoststest"
+
+    filename = "./public_ips"
 
     provisioner "local-exec" {
-        command = "ansible-playbook -i hoststest nginx_playbook.yml"
+        command = "ansible-playbook -i myazure_rm.yml nginx_playbook.yml"
     }
 }

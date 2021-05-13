@@ -12,5 +12,5 @@ variable "ssh-source-address" { # Override this to only allow access from specif
 
 variable "prefix" {
   type    = string
-  default = "vt-demo"
+  default = "dt-demo"
 }
