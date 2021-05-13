@@ -34,9 +34,9 @@ ${data.azurerm_public_ip.vt-demo-ip-data.ip_address}
 ansible_become=true
 ansible_user=adminuser
 EOF
-    filename = "./hoststest"
+    filename = "./hosts"
 
     provisioner "local-exec" {
-        command = "ansible-playbook -i hoststest nginx_playbook.yml"
+        command = "ansible-playbook -i hosts nginx_playbook.yml"
     }
 }
