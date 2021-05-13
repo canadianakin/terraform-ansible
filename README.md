@@ -70,14 +70,24 @@ terraform apply tfplan.plan
 ```
 You can modify the `vars.tf` file, or override them with a file ending in `.tfvars` file to change variables. You can also pass them in through the command line using the `-var 'NAME=VALUE'` option.
 
+# Clean Up
+Destroy the resources you've created. You should also manually destroy the storage container you've created for the remote state in the Azure portal.
+```
+terraform destroy
+```
+
 # Pros & Cons for Terraform as the Initiator with a Dynamic Inventory
+This seems like the preferrable implemenation for Azure. The ability to override the playbook and inventory location variables gives it essentially the same utility as using Asible as the initiator. There is less complexity for this example. As projects scale up, that may not be the case, but I think that alternate methods will suffer similarly.
+
 ## Pros
 - Resource group for dynamic inventories is guaranteed to be created before ansible is run, allowing immediate configuration
 - Output is displayed cleanly
 - Variables may not need to be passed through the command line (at least for this example)
 - If desired, resources can be targeted using different tags or different playbooks
+- Less required modules & collections.
 
 ## Cons
 -  Ansible is not run unless there is a change in state.
     - Solution: Using a timestamp trigger in a null resource will get it to run on every apply. This causes the null "resource" to be destroyed and then recreated. 
+    - If this resource isn't run last, there could be issues with the Ansbile playbook running before the vms are initialized. Currently it is using an output as a dependancy as a solution to ensure it runs last, but this may need additional thought.
 - Ansible playbooks and inventories should be stored in a variables file or passed as variables in the command line. This is not exactly a con, but it could be annoying with a lot of different playbooks and/or inventories. 
