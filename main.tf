@@ -11,7 +11,7 @@ terraform {
     resource_group_name  = "terraform-state"
     storage_account_name = "tfansiblestorageakin"
     container_name       = "terraform-state-container"
-    key                  = "viaansible.tfstate"
+    key                  = "dynamicansible.tfstate"
   }
 }
 
@@ -24,4 +24,3 @@ resource "azurerm_resource_group" "va-demo" {
   name     = "via-ansible"
   location = var.location
 }
-
