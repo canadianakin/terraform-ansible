@@ -71,10 +71,13 @@ terraform apply tfplan.plan
 You can modify the `vars.tf` file, or override them with a file ending in `.tfvars` file to change variables. You can also pass them in through the command line using the `-var 'NAME=VALUE'` option.
 
 # Pros & Cons for Terraform as the Initiator with a Dynamic Inventory
-* Pros
-    - Resource group for dynamic inventories is guaranteed to be created before ansible is run, allowing immediate configuration
-    - Output is displayed without having to make any changes
+## Pros
+- Resource group for dynamic inventories is guaranteed to be created before ansible is run, allowing immediate configuration
+- Output is displayed cleanly
+- Variables may not need to be passed through the command line (at least for this example)
+- If desired, resources can be targeted using different tags or different playbooks
 
-
-* Issues
-    -  Ansible is not run unless there is a change in state. However, using a timestamp trigger will get it to run on every apply. This causes the "resource" to be destroyed and then recreated.
+## Cons
+-  Ansible is not run unless there is a change in state.
+    - Solution: Using a timestamp trigger in a null resource will get it to run on every apply. This causes the null "resource" to be destroyed and then recreated. 
+- Ansible playbooks and inventories should be stored in a variables file or passed as variables in the command line. This is not exactly a con, but it could be annoying with a lot of different playbooks and/or inventories. 
