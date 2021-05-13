@@ -34,5 +34,5 @@ ${data.azurerm_public_ip.va-demo-ip-data.ip_address}
 ansible_become=true
 ansible_user=adminuser
 EOF
-  filename = "/home/akin/hosts"
+  filename = "hosts"
 }
