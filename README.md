@@ -61,7 +61,7 @@ terraform destroy
 ```
 
 # Pros & Cons for Terraform as the Initiator with a Dynamic Inventory
-This seems like the preferrable implemenation for Azure. The ability to override the playbook and inventory location variables gives it essentially the same utility as using Asible as the initiator. There is less complexity for this example. As projects scale up, that may not be the case, but I think that alternate methods will suffer similarly.
+This seems like the preferable implementation for Azure. The ability to override the playbook and inventory location variables gives it essentially the same utility as using Ansible as the initiator. There is less complexity for this example. As projects scale up, that may not be the case, but I think that alternate methods will suffer similarly.
 
 ## Pros
 - Output is displayed cleanly
