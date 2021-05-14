@@ -46,7 +46,7 @@ sudo apt install python3-pip
 ```
 ansible-galaxy collection install azure.azcollection
 ```
-This collection has dependancies of its own. Navigate into the collection (default: ~/.ansible/collections/ansible_collections/azure/azcollection/) and then use pip to install those dependancies
+This collection has dependencies of its own. Navigate into the collection (default: ~/.ansible/collections/ansible_collections/azure/azcollection/) and then use pip to install those dependencies
 ```
 pip install -r requirements-azure.txt
 ```
@@ -69,7 +69,7 @@ az storage account create -g terraform-state -l eastus \
 ```
 
 # Ansible Dynamic Inventory
-The dynamic invetory filename must end in 'azure_rm' and must be a .yml or .yaml file. 
+The dynamic inventory filename must end in 'azure_rm' and must be a .yml or .yaml file. 
 
 # Running Ansible
 Terraform must first be initialized, which creates and stores the state in the remote backend. You can then run the playbook, specifying the dynamic inventory and passing in the state you would like for Terraform. 
@@ -101,5 +101,5 @@ I do not see this implementation being the best option, at least for this use ca
     - IE: on the first run, there is no inventory and is only populated on subsequent runs.
     - Needs to be executed twice for the initial run to populate dynamic inventory.
     - This issue would not be present if terraform were to call ansible, because vms would be provisioned first.
-- Difficulty running Ansible independantly from Terraform when desired. 
+- Difficulty running Ansible independently from Terraform when desired. 
 - The community collection for Ansible is maintained by the community, which may have implications for stability and security. 
