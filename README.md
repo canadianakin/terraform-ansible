@@ -39,7 +39,7 @@ sudo apt install python3-pip
 ```
 ansible-galaxy collection install azure.azcollection
 ```
-This collection has dependancies of its own. Navigate into the collection (default: ~/.ansible/collections/ansible_collections/azure/azcollection/) and then use pip to install those dependancies
+This collection has dependencies of its own. Navigate into the collection (default: ~/.ansible/collections/ansible_collections/azure/azcollection/) and then use pip to install those dependencies
 ```
 pip install -r requirements-azure.txt
 ```
@@ -77,7 +77,7 @@ terraform destroy
 ```
 
 # Pros & Cons for Terraform as the Initiator with a Dynamic Inventory
-This seems like the preferrable implemenation for Azure. The ability to override the playbook and inventory location variables gives it essentially the same utility as using Asible as the initiator. There is less complexity for this example. As projects scale up, that may not be the case, but I think that alternate methods will suffer similarly.
+This seems like the preferable implementation for Azure. The ability to override the playbook and inventory location variables gives it essentially the same utility as using Ansible as the initiator. There is less complexity for this example. As projects scale up, that may not be the case, but I think that alternate methods will suffer similarly.
 
 ## Pros
 - Resource group for dynamic inventories is guaranteed to be created before ansible is run, allowing immediate configuration
@@ -89,5 +89,5 @@ This seems like the preferrable implemenation for Azure. The ability to override
 ## Cons
 -  Ansible is not run unless there is a change in state.
     - Solution: Using a timestamp trigger in a null resource will get it to run on every apply. This causes the null "resource" to be destroyed and then recreated. 
-    - If this resource isn't run last, there could be issues with the Ansbile playbook running before the vms are initialized. Currently it is using an output as a dependancy as a solution to ensure it runs last, but this may need additional thought.
+    - If this resource isn't run last, there could be issues with the Ansible playbook running before the vms are initialized. Currently it is using an output as a dependency as a solution to ensure it runs last, but this may need additional thought.
 - Ansible playbooks and inventories should be stored in a variables file or passed as variables in the command line. This is not exactly a con, but it could be annoying with a lot of different playbooks and/or inventories. 
