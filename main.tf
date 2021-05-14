@@ -44,5 +44,5 @@ resource "null_resource" "ansible" {
   provisioner "local-exec" {
         command = "ansible-playbook -i ${var.inventory} ${var.playbook }"
     }
-    depends_on = [data.azurerm_public_ip.dt-demo-ip-data]
+    depends_on = [data.azurerm_public_ip.dt-demo-ip-data1, data.azurerm_public_ip.dt-demo-ip-data2]
 }
