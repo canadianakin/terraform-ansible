@@ -3,6 +3,7 @@ mykey.pub
 
 # Local .terraform directories
 **/.terraform/*
+.terraform/
 
 # .tfstate files
 *.tfstate

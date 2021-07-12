@@ -1,4 +1,5 @@
 # Terraform-Ansible
+
 This repo is for testing various configurations and integrations of Ansible and Terraform. The end goal is to display the nginx start page when navigating to the IP address.
 
 To run, you will need the following prerequisites:
